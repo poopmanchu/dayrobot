@@ -13,7 +13,7 @@ class EntriesController < ApplicationController
 			entry_date = message.subject.extract_date
 		end
 		
-		@entry = Entry.new(:subject => message.subject, :content => message.parts[0].body.decoded) 
+		@entry = Entry.new(:subject => entry_date, :content => message.parts[0].body.decoded) 
 		@entry.save
 		
 		#render :text => message.subject
