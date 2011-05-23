@@ -7,11 +7,7 @@ class EntriesController < ApplicationController
 		
 		message = Mail.new(params[:message])
 		
-		if message.subject.extract_date.nil?
-			entry_date = "N/A"
-		else
-			entry_date = message.subject.extract_date
-		end
+		entry_date = message.subject.extract_date
 		
 		@entry = Entry.new(:subject => entry_date, :content => message.parts[0].body.decoded) 
 		@entry.save
@@ -32,7 +28,13 @@ class EntriesController < ApplicationController
 		
 		def extract_date(subject)
 			date_regex = 'what did you do today\?\s\((\d{4}-\d{2}-\d{2})\)'
-			subject.match(date_regex)[1]
+			
+			if subject.match(date_regex)
+				return subject.match(date_regex)[1]
+			else
+				return "N/A"
+			end
+			
 		end
 
 end
