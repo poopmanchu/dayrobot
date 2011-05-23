@@ -4,8 +4,16 @@ class EntriesController < ApplicationController
 	skip_before_filter :verify_authenticity_token
 	
 	def create
+		
 		message = Mail.new(params[:message])
-		@entry = Entry.new(:subject => message.subject, :content => message.parts[0].body.decoded)
+		
+		if message.subject.extract_date.nil?
+			entry_date = "N/A"
+		else
+			entry_date = message.subject.extract_date
+		end
+		
+		@entry = Entry.new(:subject => message.subject, :content => message.parts[0].body.decoded) 
 		@entry.save
 		
 		#render :text => message.subject
@@ -19,5 +27,12 @@ class EntriesController < ApplicationController
 	def index
 		@entries = Entry.all
 	end
+	
+	private
+		
+		def extract_date(subject)
+			date_regex = 'what did you do today\?\s\((\d{4}-\d{2}-\d{2})\)'
+			subject.match(date_regex)[1]
+		end
 
 end
