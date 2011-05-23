@@ -5,7 +5,7 @@ class EntriesController < ApplicationController
 	
 	def create
 		message = Mail.new(params[:message])
-		@entry = Entry.new(:content => message.subject)
+		@entry = Entry.new(:content => message.body)
 		@entry.save
 		
 		#render :text => message.subject
