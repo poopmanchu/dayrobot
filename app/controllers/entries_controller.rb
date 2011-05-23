@@ -1,5 +1,5 @@
-class IncomingMailsController < ApplicationController
-	
+class EntriesController < ApplicationController
+
 	require 'mail'
 	skip_before_filter :verify_authenticity_token
 	

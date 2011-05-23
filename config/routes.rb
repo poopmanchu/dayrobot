@@ -1,4 +1,7 @@
 Dayrobot::Application.routes.draw do
+
+  resources :entries
+
   get "users/new"
 
   get "pages/home"
@@ -6,6 +9,10 @@ Dayrobot::Application.routes.draw do
   get "pages/about"
 
   get "home/about"
+  
+  
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
