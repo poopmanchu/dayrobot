@@ -15,5 +15,9 @@ class EntriesController < ApplicationController
 		
 		render :text => 'success', :status => 200
 	end
+		
+	def show
+		@entries = Entry.all
+	end
 
 end
