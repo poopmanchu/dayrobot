@@ -12,7 +12,7 @@ class EntriesController < ApplicationController
 		if message.subject.match(date_regex)
 			entry_date =  message.subject.match(date_regex)[1]
 		else
-			render :text => 'success', :status => 200
+			render :text => 'failure', :status => 404
 		end
 		
 		
