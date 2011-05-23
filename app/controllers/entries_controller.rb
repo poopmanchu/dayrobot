@@ -17,7 +17,7 @@ class EntriesController < ApplicationController
 		
 		
 		
-		@entry = Entry.new(:subject => entry_date, :content => message.parts[0].body.decoded) 
+		@entry = Entry.new(:entry_date => entry_date, :content => message.parts[0].body.decoded) 
 		@entry.save
 		
 		#render :text => message.subject
