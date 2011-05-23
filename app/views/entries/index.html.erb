@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>User_Id</th>
-    <th>Subject</th>
     <th>Entry Date</th>
     <th>Content</th>
     <th></th>
@@ -14,8 +13,7 @@
 <% @entries.each do |entry| %>
   <tr>
     <td><%= entry.user_id %></td>
-    <td><%= entry.subject %></td>
-    <td>test</td>
+    <td><%= entry.entry_date %></td>
     <td><%= entry.content %></td>
   </tr>
 <% end %>
