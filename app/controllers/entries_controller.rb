@@ -7,12 +7,12 @@ class EntriesController < ApplicationController
 		
 		message = Mail.new(params[:message])
 		
-		date_regex = 'what did you do today\?\s\((\d{4}-\d{2}-\d{2})\)'
+		date_regex = '.*what did you do today\?\s\((\d{4}-\d{2}-\d{2})\).*'
 			
 		if message.subject.match(date_regex)
 			entry_date =  message.subject.match(date_regex)[1]
 		else
-			entry_date = "N/A"
+			render :text => 'success', :status => 200
 		end
 		
 		
