@@ -23,14 +23,12 @@ class EntriesController < ApplicationController
 	def index
 		@entries = Entry.all
 	end
-	
-	private
 		
-		def extract_date(subject)
+		def extract_date
 			date_regex = 'what did you do today\?\s\((\d{4}-\d{2}-\d{2})\)'
 			
-			if subject.match(date_regex)
-				return subject.match(date_regex)[1]
+			if self.match(date_regex)
+				return self.match(date_regex)[1]
 			else
 				return "N/A"
 			end
