@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110529175612) do
+ActiveRecord::Schema.define(:version => 20110529211514) do
 
   create_table "entries", :force => true do |t|
     t.string   "content"
@@ -18,18 +18,17 @@ ActiveRecord::Schema.define(:version => 20110529175612) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "entry_date"
-    t.string   "from"
   end
 
   add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "encrypted_password"
-    t.string   "salt"
+    t.string    "name"
+    t.string    "email"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "encrypted_password"
+    t.string    "salt"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

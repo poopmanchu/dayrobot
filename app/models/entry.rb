@@ -1,5 +1,5 @@
 class Entry < ActiveRecord::Base
-	attr_accessible :content
+	attr_accessible :content, :entry_date
 	
 	belongs_to :user
 	
