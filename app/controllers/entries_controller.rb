@@ -15,7 +15,7 @@ class EntriesController < ApplicationController
 			render :text => 'failure', :status => 404
 		end
 		
-		@entry = Entry.new(:entry_date => entry_date, :from => message.from :content => message.parts[0].body.decoded) 
+		@entry = Entry.new(:entry_date => entry_date, :from => message.from, :content => message.parts[0].body.decoded) 
 		@entry.save
 		
 		#render :text => message.subject
