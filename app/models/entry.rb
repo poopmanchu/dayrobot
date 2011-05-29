@@ -5,4 +5,10 @@ class Entry < ActiveRecord::Base
 	
 	default_scope :order => 'entries.created_at DESC'
 	
+	before_save :parse_date
+	
+	def parse_date
+		
+	end
+	
 end

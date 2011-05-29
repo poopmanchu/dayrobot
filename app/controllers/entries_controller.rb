@@ -10,7 +10,8 @@ class EntriesController < ApplicationController
 		date_regex = 'what did you do today\?\s\((\d{4}-\d{2}-\d{2})\)'
 			
 		if message.subject.match(date_regex)
-			entry_date =  message.subject.match(date_regex)[1]
+			entry_date_string =  message.subject.match(date_regex)[1]
+			entry_date = Date.strptime(entry_date_string, '%F')
 		else
 			entry_date = "nope"
 			#render :text => 'failure', :status => 404
