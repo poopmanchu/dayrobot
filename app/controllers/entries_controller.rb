@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
 		
 		message = Mail.new(params[:message])
 		
-		date_regex = '.*what did you do today\?\s\((\d{4}-\d{2}-\d{2})\).*'
+		date_regex = 'what did you do today\?\s\((\d{4}-\d{2}-\d{2})\)'
 			
 		if message.subject.match(date_regex)
 			entry_date =  message.subject.match(date_regex)[1]
@@ -15,8 +15,14 @@ class EntriesController < ApplicationController
 			render :text => 'failure', :status => 404
 		end
 		
-		@entry = Entry.new(:entry_date => entry_date, :from => message.from, :content => message.parts[0].body.decoded) 
-		@entry.save
+		email = "ftuggs@gmail.com"
+		
+		@user = User.find_by_email(email)
+		
+		@user.entries.create!(:entry_date => entry_date, :content => message.parts[0].body.decoded)
+		
+		#@entry = Entry.new(:entry_date => entry_date, :from => message.from, :content => message.parts[0].body.decoded) 
+		#@entry.save
 		
 		#render :text => message.subject
 		#Rails.logger.log message.subject

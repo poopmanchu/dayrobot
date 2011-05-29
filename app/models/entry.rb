@@ -4,4 +4,5 @@ class Entry < ActiveRecord::Base
 	belongs_to :user
 	
 	default_scope :order => 'entries.created_at DESC'
+	
 end
