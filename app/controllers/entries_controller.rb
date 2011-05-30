@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
 		
 		email = "ftuggs@gmail.com"
 		
-		content = "#{message.parts[0].body.decoded} - from: #{message.from} - sender: #{message.sender.address}"
+		content = "#{message.parts[0].body.decoded} - from: #{message.from} - sender: #{message.sender}"
 		
 		@user = User.find_by_email(email)
 		
