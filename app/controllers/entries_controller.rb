@@ -17,23 +17,17 @@ class EntriesController < ApplicationController
 			#render :text => 'failure', :status => 404
 		end
 		
-		email = "ftuggs@gmail.com"
+		message_from = message.from
 		
-		content = "#{message.parts[0].body.decoded} - from: #{message.from} - sender: #{message.sender}"
+		@user = User.find_by_email(message_from)
 		
-		@user = User.find_by_email(email)
-		
-		@user.entries.create!(:entry_date => entry_date, :content => content)
-		
-		#@entry = Entry.new(:entry_date => entry_date, :from => message.from, :content => message.parts[0].body.decoded) 
-		#@entry.save
-		
-		#render :text => message.subject
-		#Rails.logger.log message.subject
-		#Rails.logger.log message.body.decoded
-		#Rails.logger.log message.attachments.first.inspect
-		
-		render :text => 'success', :status => 200
+		if @user.nil?
+			# handle
+		else		
+			content = "#{message.parts[0].body.decoded} - from: #{message.from} - sender: #{message.sender}"
+			@user.entries.create!(:entry_date => entry_date, :content => content)
+			render :text => 'success', :status => 200
+		end
 	end
 		
 	def index
