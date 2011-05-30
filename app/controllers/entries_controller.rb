@@ -19,9 +19,11 @@ class EntriesController < ApplicationController
 		
 		email = "ftuggs@gmail.com"
 		
+		content = "#{message.parts[0].body.decoded} - from: #{message.envelope.from} - sender: #{message.sender.address}"
+		
 		@user = User.find_by_email(email)
 		
-		@user.entries.create!(:entry_date => entry_date, :content => message.parts[0].body.decoded)
+		@user.entries.create!(:entry_date => entry_date, :content => content)
 		
 		#@entry = Entry.new(:entry_date => entry_date, :from => message.from, :content => message.parts[0].body.decoded) 
 		#@entry.save
