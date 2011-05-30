@@ -1,0 +1,11 @@
+<h1>
+	<%= @user.name %>
+</h1>
+<table class="entries">
+	<% @user.entries.each do |entry| %>
+	  <tr class="entry">
+		<td><%= entry.entry_date %></td>
+		<td><%= entry.content %></td>
+	  </tr>
+	<% end %>
+</table>

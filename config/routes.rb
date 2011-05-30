@@ -2,13 +2,17 @@ Dayrobot::Application.routes.draw do
 
   resources :entries
 
-  get "users/new"
+  resources :users
 
   get "pages/home"
 
   get "pages/about"
 
   get "home/about"
+  
+  match '/register', :to => 'users#new'
+  
+  root :to => "pages#home"
   
   
 
