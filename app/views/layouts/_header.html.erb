@@ -2,8 +2,14 @@
 	<nav class="round">
 		<ul>
 			<li><%= link_to "dayrobot", root_path, :id => "logo" %></li>
-			<li><%= link_to "register", register_path, :class => nav_link("register") %></li>
-			<li><%= link_to "login", '#' %></li>
+			
+			<% if logged_in? %>
+				<li><%= link_to "me", current_user %></li>
+				<li><%= link_to "logout", logout_path, :method => :delete %></li>
+			<% else %>
+				<li><%= link_to "login", login_path, :class => nav_link("login") %></li>
+				<li><%= link_to "register", register_path, :class => nav_link("register") %></li>
+			<% end %>
 		</ul>
 	</nav>
 </header>

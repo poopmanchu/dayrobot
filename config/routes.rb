@@ -1,19 +1,25 @@
 Dayrobot::Application.routes.draw do
 
-  resources :entries
-
-  resources :users
-
-  get "pages/home"
-
-  get "pages/about"
-
-  get "home/about"
-  
-  match '/register', :to => 'users#new'
-  
-  root :to => "pages#home"
-  
+	
+	
+	resources :users
+	resources :entries
+	resources :sessions, :only => [:new, :create, :destroy]
+	
+	match '/register', :to => 'users#new'
+	match '/login', :to => 'sessions#new'
+	match '/logout', :to => 'sessions#destroy'
+	
+	get "pages/home"
+	
+	get "pages/about"
+	
+	get "home/about"
+	
+	
+	
+	root :to => "pages#home"
+	  
   
 
 

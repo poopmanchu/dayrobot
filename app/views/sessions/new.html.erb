@@ -1,0 +1,17 @@
+<h1>login to dayrobot.</h1>
+
+<%= form_for(:session, :url => sessions_path) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email, :class => "text_input" %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, :class => "text_input" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "login" %>
+  </div>
+<% end %>
+
+<p>new user? <%= link_to "register", register_path %></p>
