@@ -2,7 +2,7 @@ class TagsController < ApplicationController
 	
 	def new
 	  @tag = Tag.new
-	  @title = "add tag"
+	  @title = "tags"
 	end
 	
 	def create

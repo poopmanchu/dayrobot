@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(params[:user])
 		if @user.save
+			DayRobot.welcome_email(@user).deliver
 			login @user
 			flash[:success] = "welcome to dayrobot."
 			redirect_to user_path(@user)
