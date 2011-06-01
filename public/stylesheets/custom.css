@@ -43,9 +43,18 @@ table.entries td {
 	
 }
 
-.tagged {
+a.tagged {
 	color: #6699FF;
 }
+
+a.tagged:visited {
+	color: #6699FF;
+}
+a.tagged:hover {
+	color: red;
+}
+
+
 
 /* Links */
 
@@ -54,14 +63,16 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: #383838;
+}
+
 a:hover {
   color: #6699FF;
   text-decoration: none;
 }
 
-a:visited {
-  color: #383838;
-}
+
 
 /* Navigation */
 
@@ -72,13 +83,15 @@ a#logo {
 	color: #EEEEEE
 }
 
+a#logo:visited {
+	color: #EEEEEE
+}
+
 a#logo:hover {
 	color: #6699FF
 }
 
-a#logo:visited {
-	color: #EEEEEE
-}
+
 
 a.unselected_nav_link {
 	font-family: Courier;
@@ -87,13 +100,15 @@ a.unselected_nav_link {
 	color: #383838
 }
 
+a.unselected_nav_link:visited {
+	color: #383838
+}
+
 a.unselected_nav_link:hover {
 	color: #6699FF
 }
 
-a.unselected_nav_link:visited {
-	color: #383838
-}
+
 
 a.selected_nav_link {
 	font-family: Courier;
@@ -102,13 +117,15 @@ a.selected_nav_link {
 	color: #6699FF
 }
 
+a.selected_nav_link:visited {
+	color: #6699FF
+}
+
 a.selected_nav_link:hover {
 	color: #6699FF
 }
 
-a.selected_nav_link:visited {
-	color: #6699FF
-}
+
 
 nav {
   float: left;

@@ -1,0 +1,12 @@
+<h1>
+	<%= @tag.tag %>
+</h1>
+
+<table class="entries">
+	<% @user.entries.each do |entry| %>
+	  <tr class="entry">
+		<td><%= entry.entry_date %></td>
+		<td><%= raw tagger(entry.content) %></td>
+	  </tr>
+	<% end %>
+</table>

@@ -25,9 +25,8 @@ module ApplicationHelper
 		tagged_entry = raw_entry
 		
 		@user.tags.find_each do |tag_row|
-			#tag = @user.tags.find_by_id(1).tag
 			tag = tag_row.tag
-			tagged_entry = tagged_entry.gsub(/\b(#{tag})\b/i, "<span class='tagged'>\\1</span>")
+			tagged_entry = tagged_entry.gsub(/\b(#{tag})\b/i, "<a href='\\\\tags\\\\#{tag_row.id}' class='tagged'>\\1</a>")
 		end
 		
 		return tagged_entry

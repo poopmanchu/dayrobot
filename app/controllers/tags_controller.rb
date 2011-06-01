@@ -11,4 +11,9 @@ class TagsController < ApplicationController
 		redirect_to user_path(@user)
 	end
 	
+	def show
+		@user = current_user
+		@tag = Tag.find(params[:id])
+	end
+	
 end
