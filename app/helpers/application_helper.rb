@@ -19,5 +19,18 @@ module ApplicationHelper
 			return "unselected_nav_link"
 		end
 	end
+	
+	def tagger(raw_entry)
+		
+		tagged_entry = raw_entry
+		
+		@user.tags.find_each do |tag_row|
+			#tag = @user.tags.find_by_id(1).tag
+			tag = tag_row.tag
+			tagged_entry = tagged_entry.gsub(/\b(#{tag})\b/i, "<span class='tagged'>\\1</span>")
+		end
+		
+		return tagged_entry
+	end
 
 end

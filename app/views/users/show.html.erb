@@ -5,7 +5,7 @@
 	<% @user.entries.each do |entry| %>
 	  <tr class="entry">
 		<td><%= entry.entry_date %></td>
-		<td><%= entry.content %></td>
+		<td><%= raw tagger(entry.content) %></td>
 	  </tr>
 	<% end %>
 </table>
