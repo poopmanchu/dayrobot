@@ -10,21 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110531214346) do
+ActiveRecord::Schema.define(:version => 20110601151904) do
 
   create_table "entries", :force => true do |t|
-    t.string    "content"
-    t.integer   "user_id"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.date      "entry_date"
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "entry_date"
   end
 
   add_index "entries", ["user_id"], :name => "index_entries_on_user_id"
 
   create_table "tags", :force => true do |t|
     t.string   "tag"
-    t.string   "user_id"
+    t.integer  "user_id",    :limit => 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
