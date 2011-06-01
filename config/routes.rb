@@ -2,13 +2,17 @@ Dayrobot::Application.routes.draw do
 
 	
 	
+  get "tags/new"
+
 	resources :users
 	resources :entries
 	resources :sessions, :only => [:new, :create, :destroy]
+	resources :tags
 	
 	match '/register', :to => 'users#new'
 	match '/login', :to => 'sessions#new'
 	match '/logout', :to => 'sessions#destroy'
+	match '/newtag', :to => 'tags#new'
 	
 	get "pages/home"
 	
