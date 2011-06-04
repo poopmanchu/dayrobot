@@ -20,7 +20,7 @@ module ApplicationHelper
 		end
 	end
 	
-	def tagger(raw_entry)
+	def tagger(raw_entry, selected_tag="lkjfklsdjf")
 		
 		tagged_entry = raw_entry
 		
@@ -29,7 +29,12 @@ module ApplicationHelper
 			tagged_entry = tagged_entry.gsub(/\b(#{tag})\b/i, "<a href='\\\\tags\\\\#{tag_row.id}' class='tagged'>\\1</a>")
 		end
 		
+		#highlight selected tag, if any
+		tagged_entry = tagged_entry.gsub(/class='(tagged)'>#{selected_tag}/i, "class='selected_tag'>#{selected_tag}")
+		
+		
 		return tagged_entry
+	
 	end
 
 end
