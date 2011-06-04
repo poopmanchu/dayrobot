@@ -3,7 +3,7 @@
 </h1>
 
 <table class="entries">
-	<% @user.entries.find_by_sql("SELECT * FROM entries WHERE content  #{DATABASE_OPERATOR[:like_operator]} '%#{@tag.tag}%'").each do |entry| %>
+	<% @user.entries.find_by_sql("SELECT * FROM entries WHERE content  #{DATABASE_OPERATOR[:like_operator]} '%#{@tag.tag}%' ORDER BY entry_date DESC").each do |entry| %>
 	  <tr class="entry">
 		<td><%= entry.entry_date %></td>
 		<td><%= raw tagger(entry.content, @tag.tag) %></td>

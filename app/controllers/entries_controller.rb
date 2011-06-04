@@ -24,7 +24,7 @@ class EntriesController < ApplicationController
 		if @user.nil?
 			# handle
 		else		
-			content = "#{message.parts[0].body.decoded} - from: #{message.from} - sender: #{message.sender}"
+			content = "#{message.parts[0].body.decoded} - from: #{message.from}"
 			@user.entries.create!(:entry_date => entry_date, :content => content)
 			render :text => 'success', :status => 200
 		end
