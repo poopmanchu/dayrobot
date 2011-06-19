@@ -10,7 +10,7 @@ class DayRobot < ActionMailer::Base
   def bot_email(user)
   	@user = user
   	@url = "http://dayrobot.heroku.com/login"
-  	mail(:to => user.email, :subject => "welcome to dayrobot.")
+  	mail(:to => user.email, :subject => "what did you do today?")
   end
   
   

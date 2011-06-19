@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
   		@title = "login"
   		render 'new'
   	else
+  		DayRobot.bot_email(user).deliver
   		login user
   		redirect_to user
   	end
